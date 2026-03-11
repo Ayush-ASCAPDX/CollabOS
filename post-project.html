@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ColabOS — Post a Project</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    [data-theme="dark"]{--bg:#050608;--surface:#0d0f12;--border:#1a1d24;--accent:#00ff88;--accent2:#0066ff;--accent3:#ff3366;--text:#f0f2f5;--muted:#5a6070;--card:#0f1117;--nav-bg:rgba(5,6,8,0.88);--grid:rgba(255,255,255,0.02);--g1:rgba(0,255,136,0.06);}
+    [data-theme="light"]{--bg:#f5f5f0;--surface:#eaeae4;--border:#d4d4cc;--accent:#007a3d;--accent2:#0044cc;--accent3:#cc1144;--text:#0a0a0a;--muted:#6b6b60;--card:#ffffff;--nav-bg:rgba(245,245,240,0.94);--grid:rgba(0,0,0,0.04);--g1:rgba(0,122,61,0.05);}
+    [data-theme="midnight"]{--bg:#0a0014;--surface:#120020;--border:#2a0050;--accent:#bf00ff;--accent2:#ff00aa;--accent3:#00d4ff;--text:#f0e8ff;--muted:#6b4d8a;--card:#100018;--nav-bg:rgba(10,0,20,0.9);--grid:rgba(191,0,255,0.04);--g1:rgba(191,0,255,0.07);}
+    [data-theme="solar"]{--bg:#1a1200;--surface:#241900;--border:#3d2e00;--accent:#ffcc00;--accent2:#ff6600;--accent3:#ff3300;--text:#fff8e0;--muted:#7a6530;--card:#1e1500;--nav-bg:rgba(26,18,0,0.9);--grid:rgba(255,204,0,0.04);--g1:rgba(255,204,0,0.07);}
+    [data-theme="ice"]{--bg:#f0f8ff;--surface:#e2f0fb;--border:#b8d8f0;--accent:#0088cc;--accent2:#0055aa;--accent3:#cc4400;--text:#0a1a2a;--muted:#5a7a9a;--card:#ffffff;--nav-bg:rgba(240,248,255,0.94);--grid:rgba(0,136,204,0.06);--g1:rgba(0,136,204,0.07);}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Noto Sans Mono',monospace;overflow-x:hidden;cursor:none;transition:background .35s,color .35s;}
+    #cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s;mix-blend-mode:difference;}
+    #curR{position:fixed;width:32px;height:32px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;}
+    body.hov #cur{width:18px;height:18px;}
+    body.hov #curR{transform:translate(-50%,-50%) scale(1.5);opacity:.7;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:100;opacity:.3;}
+    .grid-bg{position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+    .ts{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+    .tp{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px;display:none;flex-direction:column;gap:4px;min-width:172px;box-shadow:0 16px 48px rgba(0,0,0,.3);animation:popUp .2s cubic-bezier(.16,1,.3,1);}
+    .tp.open{display:flex;}
+    @keyframes popUp{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .tp-lbl{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;padding:4px 8px 8px;border-bottom:1px solid var(--border);margin-bottom:2px;}
+    .to{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;cursor:none;font-size:11px;font-weight:600;transition:all .15s;border:1px solid transparent;color:var(--text);}
+    .to:hover{background:var(--card);border-color:var(--border);}
+    .to.active{border-color:var(--accent);color:var(--accent);}
+    .sw{width:18px;height:18px;border-radius:4px;flex-shrink:0;border:1px solid rgba(128,128,128,.2);}
+    .tb{background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'Noto Sans Mono',monospace;font-size:11px;font-weight:700;padding:9px 14px;border-radius:8px;cursor:none;display:flex;align-items:center;gap:7px;transition:all .25s cubic-bezier(.16,1,.3,1);}
+    .tb:hover{border-color:var(--accent);color:var(--accent);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 48px;height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--nav-bg);backdrop-filter:blur(20px);}
+    .logo{font-weight:900;font-size:20px;letter-spacing:-1px;color:var(--text);text-decoration:none;}
+    .logo span{color:var(--accent);}
+    .nav-links{display:flex;align-items:center;gap:28px;}
+    .nav-links a{font-size:11px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.5px;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:700;padding:8px 18px;border-radius:6px;text-decoration:none;cursor:none;transition:all .25s cubic-bezier(.16,1,.3,1);}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}\n\n                /* SIDE NAV */
+    .app{display:flex;min-height:100vh;position:relative;z-index:1;}
+    .side-nav{position:fixed;top:0;left:0;bottom:0;width:64px;background:var(--surface);border-right:1px solid var(--border);padding:18px 10px;display:flex;flex-direction:column;gap:8px;z-index:80;box-shadow:0 20px 60px rgba(0,0,0,.35);transition:width .28s cubic-bezier(.16,1,.3,1);}
+    .side-nav:hover{width:220px;}
+    .side-logo{font-weight:900;font-size:18px;letter-spacing:-1px;color:var(--text);text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;margin-bottom:6px;white-space:nowrap;overflow:hidden;}
+    .side-nav:hover .side-logo{justify-content:flex-start;padding:8px 10px;}
+    .side-logo span{color:var(--accent);transition:color .35s;}
+    .logo-text{color:var(--text);}
+    .side-section{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;padding:10px 10px 4px;display:none;}
+    .side-nav:hover .side-section{display:block;}
+    .side-link{display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 8px;border-radius:8px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.3px;transition:all .25s cubic-bezier(.16,1,.3,1);}
+    .side-nav:hover .side-link{justify-content:flex-start;padding:9px 10px;}
+    .side-link:hover{background:color-mix(in srgb,var(--accent) 6%,transparent);color:var(--text);}
+    .side-link.active{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);}    
+    .side-ico{width:18px;height:18px;border-radius:5px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--muted);background:var(--card);flex-shrink:0;}
+    .side-ico svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .side-link.active .side-ico{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);}    
+    .side-text{opacity:0;max-width:0;overflow:hidden;white-space:nowrap;transition:opacity .22s ease,max-width .28s cubic-bezier(.16,1,.3,1);}
+    .side-nav:hover .side-text{opacity:1;max-width:160px;}
+    .side-spacer{flex:1;}
+        .nav-scrim{position:fixed;inset:0;background:rgba(0,0,0,.22);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:70;}
+    .side-nav:hover + .nav-scrim{opacity:1;pointer-events:auto;}
+.app-main{margin-left:64px;width:100%;transition:none;}\n@media(max-width:900px){
+      .nav-scrim{display:none;}
+
+      .side-nav{position:fixed;left:0;right:0;bottom:0;top:auto;height:68px;width:100%;flex-direction:row;align-items:center;gap:8px;padding:8px 10px;border-right:none;border-top:1px solid var(--border);overflow-x:auto;}
+      .side-nav:hover{width:100%;}
+      .side-section,.side-logo,.side-spacer{display:none;}
+      .side-link{flex-direction:column;gap:4px;font-size:10px;padding:6px 8px;}
+      .side-nav:hover .side-link{justify-content:center;padding:6px 8px;}
+      .side-text{opacity:1;max-width:100px;}
+      .side-ico{width:22px;height:22px;font-size:11px;}
+      .side-ico svg{width:16px;height:16px;}
+      .app-main{margin-left:0;padding-bottom:86px;}
+    }
+
+    
+    /* STEPPER */
+    .stepper{display:flex;align-items:center;gap:0;margin-bottom:40px;animation:fadeInUp .5s ease both;}
+    .step-item{display:flex;align-items:center;gap:10px;flex:1;}
+    .step-num{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--muted);flex-shrink:0;transition:all .3s;}
+    .step-num.active{border-color:var(--accent);background:var(--accent);color:var(--bg);}
+    .step-num.done{border-color:var(--accent);color:var(--accent);}
+    .step-label{font-size:11px;font-weight:700;color:var(--muted);transition:color .3s;}
+    .step-label.active{color:var(--accent);}
+    .step-line{flex:1;height:1px;background:var(--border);margin:0 8px;transition:background .3s;}
+    .step-line.done{background:var(--accent);}
+
+    .page-title{font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;animation:fadeInUp .5s ease .05s both;}
+    .page-sub{font-size:12px;color:var(--muted);margin-bottom:32px;animation:fadeInUp .5s ease .1s both;}
+
+    /* FORM */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .field{margin-bottom:20px;animation:fadeInUp .5s ease both;}
+    .field.full{grid-column:1/-1;}
+    .label{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:block;}
+    .input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'Noto Sans Mono',monospace;font-size:13px;padding:13px 16px;border-radius:7px;outline:none;transition:all .25s cubic-bezier(.16,1,.3,1);}
+    .input::placeholder{color:var(--muted);}
+    .input:focus{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 3%,var(--surface));}
+    textarea.input{resize:vertical;min-height:120px;}
+    select.input{cursor:none;}
+
+    /* REWARD TOGGLE */
+    .reward-toggle{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+    .ropt{border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center;cursor:none;transition:all .25s cubic-bezier(.16,1,.3,1);background:var(--surface);}
+    .ropt:hover{border-color:var(--accent);}
+    .ropt.selected{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);}
+    .ropt-icon{font-size:22px;margin-bottom:8px;}
+    .ropt-name{font-size:11px;font-weight:800;margin-bottom:4px;letter-spacing:.3px;}
+    .ropt.selected .ropt-name{color:var(--accent);}
+    .ropt-desc{font-size:10px;color:var(--muted);}
+
+    /* SKILLS */
+    .skill-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .skill-tag{font-size:11px;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--border);color:var(--muted);cursor:none;transition:all .25s cubic-bezier(.16,1,.3,1);}
+    .skill-tag:hover{border-color:var(--accent);color:var(--accent);}
+    .skill-tag.selected{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+
+    /* BUTTONS */
+    .form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:32px;animation:fadeInUp .5s ease .3s both;}
+    .btn-primary{background:var(--accent);color:var(--bg);border:none;font-family:'Noto Sans Mono',monospace;font-weight:800;font-size:13px;padding:13px 28px;border-radius:7px;cursor:none;transition:all .25s cubic-bezier(.16,1,.3,1);letter-spacing:.5px;}
+    .btn-primary:hover{opacity:.87;transform:translateY(-2px);}
+
+    /* PREVIEW */
+    .preview-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:28px;animation:fadeInUp .5s ease .2s both;}
+    .preview-label{font-size:9px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
+
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:700px){.form-grid{grid-template-columns:1fr;}.page{padding:90px 18px 40px;}.reward-toggle{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="cur"></div><div id="curR"></div>
+<div class="grid-bg"></div>
+<div class="ts">
+  <div class="tp" id="tp">
+    <div class="tp-lbl">// choose theme</div>
+    <div class="to" data-t="dark" onclick="setTheme('dark')"><div class="sw" style="background:linear-gradient(135deg,#050608 50%,#00ff88)"></div>Dark Terminal</div>
+    <div class="to" data-t="light" onclick="setTheme('light')"><div class="sw" style="background:linear-gradient(135deg,#f5f5f0 50%,#007a3d)"></div>Clean Light</div>
+    <div class="to" data-t="midnight" onclick="setTheme('midnight')"><div class="sw" style="background:linear-gradient(135deg,#0a0014 50%,#bf00ff)"></div>Midnight</div>
+    <div class="to" data-t="solar" onclick="setTheme('solar')"><div class="sw" style="background:linear-gradient(135deg,#1a1200 50%,#ffcc00)"></div>Solar Flare</div>
+    <div class="to" data-t="ice" onclick="setTheme('ice')"><div class="sw" style="background:linear-gradient(135deg,#f0f8ff 50%,#0088cc)"></div>Ice Blue</div>
+  </div>
+  <button class="tb" onclick="togglePanel()"><span id="ti">◑</span><span id="tn">Theme</span></button>
+</div>
+<div class="app">
+  <aside class="side-nav">
+    <a class="side-logo" href="index.html"><span class="logo-text">Colab</span><span>OS</span></a>
+    <div class="side-section">Main</div>
+    <a class="side-link" href="index.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg></span><span class="side-text">Home</span></a>
+    <a class="side-link" href="browse.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v4H4zM4 14h10v4H4z"/></svg></span><span class="side-text">Browse</span></a>
+    <a class="side-link active" href="post-project.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="side-text">Post</span></a>
+    <a class="side-link" href="dashboard.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6a2 2 0 0 1 2-2h4v16H6a2 2 0 0 1-2-2zm12 0H12V4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2z"/></svg></span><span class="side-text">Dashboard</span></a>
+    <div class="side-section">You</div>
+    <a class="side-link" href="profile.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-7 8a7 7 0 0 1 14 0"/></svg></span><span class="side-text">Profile</span></a>
+    <a class="side-link" href="pricing.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m4-13a4 4 0 0 0-4-2 3 3 0 1 0 0 6 3 3 0 1 1 0 6 4 4 0 0 1-4-2"/></svg></span><span class="side-text">Pricing</span></a>
+    <a class="side-link" href="about.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17v1m0-3a4 4 0 1 0-4-4"/></svg></span><span class="side-text">About</span></a>
+    <div class="side-spacer"></div>
+    <a class="side-link" href="auth.html"><span class="side-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v4H6zM6 10h12v10H6z"/></svg></span><span class="side-text">Sign In</span></a>
+  </aside>
+    <div class="nav-scrim"></div>
+  <main class="app-main">
+<div class="page">
+  <div class="stepper">
+    <div class="step-item"><div class="step-num active">1</div><div class="step-label active">Basics</div></div>
+    <div class="step-line"></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-label">Team & Reward</div></div>
+    <div class="step-line"></div>
+    <div class="step-item"><div class="step-num">3</div><div class="step-label">Preview & Post</div></div>
+  </div>
+
+  <div class="page-title">Post a Project</div>
+  <div class="page-sub">// describe your project and find the perfect collaborators</div>
+
+  <div class="form-grid">
+    <div class="field full" style="animation-delay:.1s">
+      <label class="label">Project Name</label>
+      <input class="input" placeholder="e.g. HealthTrack AI — Personal Health App" id="projName" oninput="updatePreview()"/>
+    </div>
+    <div class="field" style="animation-delay:.15s">
+      <label class="label">Category</label>
+      <select class="input">
+        <option>Web Application</option>
+        <option>Mobile App</option>
+        <option>AI / ML</option>
+        <option>Design Project</option>
+        <option>Open Source</option>
+        <option>Game</option>
+      </select>
+    </div>
+    <div class="field" style="animation-delay:.15s">
+      <label class="label">Stage</label>
+      <select class="input">
+        <option>Idea / Concept</option>
+        <option>MVP in Progress</option>
+        <option>Beta</option>
+        <option>Live — Growing</option>
+      </select>
+    </div>
+    <div class="field full" style="animation-delay:.2s">
+      <label class="label">Description</label>
+      <textarea class="input" placeholder="Describe your project — what problem does it solve, who is it for, what's the vision?" id="projDesc" oninput="updatePreview()"></textarea>
+    </div>
+    <div class="field full" style="animation-delay:.25s">
+      <label class="label">Skills Needed</label>
+      <div class="skill-wrap" id="skillWrap">
+        <button class="skill-tag" onclick="toggleSkill(this)">React</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Node.js</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Python</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">UI/UX Design</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Flutter</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">AI/ML</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">DevOps</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Marketing</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Solidity</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">PostgreSQL</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">iOS / Swift</button>
+        <button class="skill-tag" onclick="toggleSkill(this)">Android</button>
+      </div>
+    </div>
+    <div class="field full" style="animation-delay:.3s">
+      <label class="label">Reward Type</label>
+      <div class="reward-toggle">
+        <div class="ropt selected" onclick="selectReward(this)"><div class="ropt-icon">📊</div><div class="ropt-name">Equity Split</div><div class="ropt-desc">Share ownership of the project</div></div>
+        <div class="ropt" onclick="selectReward(this)"><div class="ropt-icon">💸</div><div class="ropt-name">Revenue Share</div><div class="ropt-desc">Split the ongoing revenue</div></div>
+        <div class="ropt" onclick="selectReward(this)"><div class="ropt-icon">🏆</div><div class="ropt-name">Bounty</div><div class="ropt-desc">Fixed payout on completion</div></div>
+      </div>
+    </div>
+    <div class="field" style="animation-delay:.35s">
+      <label class="label">Reward Amount / %</label>
+      <input class="input" placeholder="e.g. 20% equity or $1,500"/>
+    </div>
+    <div class="field" style="animation-delay:.35s">
+      <label class="label">Deadline</label>
+      <input class="input" type="date"/>
+    </div>
+    <div class="field" style="animation-delay:.4s">
+      <label class="label">Spots Available</label>
+      <select class="input"><option>1 collaborator</option><option>2 collaborators</option><option>3 collaborators</option><option>4+ collaborators</option></select>
+    </div>
+    <div class="field" style="animation-delay:.4s">
+      <label class="label">Time Commitment</label>
+      <select class="input"><option>Part-time (5-10 hrs/week)</option><option>Part-time (10-20 hrs/week)</option><option>Full-time</option><option>Flexible</option></select>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-label">// live preview</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px;" id="previewTitle">Your project title will appear here</div>
+    <div style="font-size:12px;color:var(--muted);line-height:1.7;" id="previewDesc">Your project description will appear here as you type...</div>
+  </div>
+
+  <div class="form-actions">
+    <a href="dashboard.html" class="btn-ghost">Cancel</a>
+    <button class="btn-primary" onclick="window.location.href='browse.html'">Post Project →</button>
+  </div>
+</div>
+  </main>
+</div>
+
+<script>
+  function updatePreview(){
+    const t=document.getElementById('projName').value;
+    const d=document.getElementById('projDesc').value;
+    document.getElementById('previewTitle').textContent=t||'Your project title will appear here';
+    document.getElementById('previewDesc').textContent=d||'Your project description will appear here as you type...';
+  }
+  function toggleSkill(el){el.classList.toggle('selected');}
+  function selectReward(el){document.querySelectorAll('.ropt').forEach(r=>r.classList.remove('selected'));el.classList.add('selected');}
+  const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,input,select,textarea,.ropt,.skill-tag').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
+  const TH={dark:{i:'◑',n:'Dark Terminal'},light:{i:'○',n:'Clean Light'},midnight:{i:'◉',n:'Midnight'},solar:{i:'◐',n:'Solar Flare'},ice:{i:'◌',n:'Ice Blue'}};
+  let pOpen=false;
+  function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ct',t);document.getElementById('ti').textContent=TH[t].i;document.getElementById('tn').textContent=TH[t].n;document.querySelectorAll('.to').forEach(o=>o.classList.toggle('active',o.dataset.t===t));closePanel();}
+  function togglePanel(){pOpen=!pOpen;document.getElementById('tp').classList.toggle('open',pOpen);}
+  function closePanel(){pOpen=false;document.getElementById('tp').classList.remove('open');}
+  document.addEventListener('click',e=>{if(!e.target.closest('.ts'))closePanel();});
+  setTheme(localStorage.getItem('ct')||'dark');
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
