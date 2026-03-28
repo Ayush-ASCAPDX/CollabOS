@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Edit Profile</title>
+  <meta name="description" content="Edit your CollabOS profile details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell">
+    <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="profile-edit">
+    <div class="profile-edit-hero"></div>
+    <div class="container">
+      <div class="profile-edit-card">
+        <div class="profile-edit-header">
+          <div class="profile-edit-identity">
+            <div class="profile-edit-avatar">
+              <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=200&auto=format&fit=crop" alt="Profile avatar">
+            </div>
+            <div>
+              <h1>Alexa Rowles</h1>
+              <p>alexarowles@gmail.com</p>
+            </div>
+          </div>
+          <button class="btn btn-primary">Save</button>
+        </div>
+
+        <form class="profile-edit-form">
+          <div class="profile-edit-grid">
+            <label class="profile-edit-field">
+              <span>Full Name</span>
+              <input type="text" placeholder="Your full name">
+            </label>
+            <label class="profile-edit-field">
+              <span>Nick Name</span>
+              <input type="text" placeholder="Preferred name">
+            </label>
+            <label class="profile-edit-field">
+              <span>Gender</span>
+              <select>
+                <option value="" disabled selected>Select</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Non-binary</option>
+                <option>Prefer not to say</option>
+              </select>
+            </label>
+            <label class="profile-edit-field">
+              <span>Country</span>
+              <select>
+                <option value="" disabled selected>Select country</option>
+                <option>United States</option>
+                <option>India</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+              </select>
+            </label>
+            <label class="profile-edit-field">
+              <span>Language</span>
+              <select>
+                <option value="" disabled selected>Select language</option>
+                <option>English</option>
+                <option>Hindi</option>
+                <option>Spanish</option>
+                <option>French</option>
+              </select>
+            </label>
+            <label class="profile-edit-field">
+              <span>Time Zone</span>
+              <select>
+                <option value="" disabled selected>Select time zone</option>
+                <option>UTC-08:00 (Pacific)</option>
+                <option>UTC-05:00 (Eastern)</option>
+                <option>UTC+05:30 (India)</option>
+                <option>UTC+01:00 (Central Europe)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="profile-edit-section">
+            <div>
+              <h2>My email address</h2>
+              <p>Manage your emails and notifications.</p>
+            </div>
+            <div class="profile-edit-email">
+              <span class="profile-edit-email-icon">@</span>
+              <div>
+                <p class="profile-edit-email-text">alexarowles@gmail.com</p>
+                <span>1 month ago</span>
+              </div>
+            </div>
+            <button class="btn btn-outline" type="button">+ Add Email Address</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+{
+  "name": "collabos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CollabOS static site with MongoDB-backed waitlist API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.2"
+  }
+}

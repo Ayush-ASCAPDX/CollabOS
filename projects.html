@@ -1,0 +1,615 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Projects</title>
+  <meta name="description" content="Explore active startup projects, find your match, and join teams building on CollabOS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell projects-page">
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="page-loader-mark">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="projects-hero">
+    <div class="section-bg section-bg-alt">
+      <div class="section-orb section-orb-right"></div>
+      <div class="section-orb section-orb-left"></div>
+      <div class="projects-grid-pattern"></div>
+    </div>
+    <div class="container projects-hero-content">
+      <div class="projects-hero-copy">
+        <span class="section-badge section-badge-purple">Project Hub</span>
+        <h1 class="projects-title">Join teams already building.</h1>
+        <p class="projects-subtitle">Search active ideas, see your fit, inspect demand, and move from browsing to joining with one step.</p>
+        <div class="projects-hero-actions">
+          <a href="#projectHub" class="btn btn-primary">Browse Projects</a>
+          <a href="waitlist.html" class="btn btn-outline">Start Your Project</a>
+        </div>
+      </div>
+      <div class="projects-proof-grid">
+        <div class="projects-proof-card">
+          <span class="projects-proof-value">25+</span>
+          <p>projects created this week</p>
+        </div>
+        <div class="projects-proof-card">
+          <span class="projects-proof-value">100+</span>
+          <p>builders active now</p>
+        </div>
+        <div class="projects-proof-card">
+          <span class="projects-proof-value">48h</span>
+          <p>average team formation time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-activity">
+    <div class="container">
+      <div class="projects-section-head">
+        <div>
+          <span class="projects-kicker">Live Activity</span>
+          <h2>Platform activity right now</h2>
+        </div>
+      </div>
+      <div class="projects-activity-list">
+        <div class="projects-activity-item">
+          <span class="projects-activity-icon">+</span>
+          <div>
+            <h3>Rohit joined AI Startup</h3>
+            <p>Joined Northwind AI 3 minutes ago</p>
+          </div>
+        </div>
+        <div class="projects-activity-item">
+          <span class="projects-activity-icon">^</span>
+          <div>
+            <h3>Ananya started new project</h3>
+            <p>Launched CreatorFlow 11 minutes ago</p>
+          </div>
+        </div>
+        <div class="projects-activity-item">
+          <span class="projects-activity-icon">=</span>
+          <div>
+            <h3>Rahul matched with team</h3>
+            <p>Matched with 3 builders for SaaS analytics</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-hub" id="projectHub">
+    <div class="container">
+      <div class="projects-recommended">
+        <div class="projects-section-head">
+          <div>
+            <span class="projects-kicker">Recommended for you</span>
+            <h2>High-fit projects based on your profile</h2>
+          </div>
+        </div>
+        <div class="projects-recommended-grid">
+          <article class="project-reco-card">
+            <div class="project-reco-top">
+              <span class="project-reco-badge">Recommended for you</span>
+              <span class="project-reco-match">96% match</span>
+            </div>
+            <h3>Northwind AI</h3>
+            <p>Strong fit for product-minded developers with AI workflow experience.</p>
+          </article>
+          <article class="project-reco-card">
+            <div class="project-reco-top">
+              <span class="project-reco-badge">Recommended for you</span>
+              <span class="project-reco-match">91% match</span>
+            </div>
+            <h3>AI Resume Builder</h3>
+            <p>High alignment if you care about UX, hiring tools, and SaaS onboarding.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="projects-section-head">
+        <div>
+          <span class="projects-kicker">Discover</span>
+          <h2>Projects ready for builders</h2>
+        </div>
+        <a href="waitlist.html" class="btn btn-primary">Start Your Project</a>
+      </div>
+
+      <div class="projects-toolbar">
+        <div class="projects-search-wrap">
+          <input type="search" id="projectSearch" class="projects-search" placeholder="Search projects by name">
+        </div>
+        <div class="projects-filters">
+          <div class="projects-filter-group">
+            <span class="projects-filter-label">Category</span>
+            <div class="projects-filter-options" data-project-filter-group="category">
+              <button class="projects-filter active" data-project-filter="all" type="button">All</button>
+              <button class="projects-filter" data-project-filter="ai" type="button">AI</button>
+              <button class="projects-filter" data-project-filter="saas" type="button">SaaS</button>
+              <button class="projects-filter" data-project-filter="web" type="button">Web</button>
+              <button class="projects-filter" data-project-filter="creator" type="button">Creator</button>
+            </div>
+          </div>
+          <div class="projects-filter-group">
+            <span class="projects-filter-label">Role Needed</span>
+            <div class="projects-filter-options" data-project-filter-group="role">
+              <button class="projects-filter active" data-project-filter="all" type="button">All</button>
+              <button class="projects-filter" data-project-filter="developer" type="button">Developer</button>
+              <button class="projects-filter" data-project-filter="designer" type="button">Designer</button>
+              <button class="projects-filter" data-project-filter="editor" type="button">Editor</button>
+            </div>
+          </div>
+          <div class="projects-filter-group">
+            <span class="projects-filter-label">Status</span>
+            <div class="projects-filter-options" data-project-filter-group="status">
+              <button class="projects-filter active" data-project-filter="all" type="button">All</button>
+              <button class="projects-filter" data-project-filter="live" type="button">Live</button>
+              <button class="projects-filter" data-project-filter="mvp" type="button">MVP</button>
+              <button class="projects-filter" data-project-filter="building" type="button">Building</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-grid-v2" id="projectGrid">
+        <article class="project-hub-card" data-project-name="AI Resume Builder" data-project-category="ai" data-project-role="designer" data-project-status="building" data-project-description="AI resume optimization tool for job seekers." data-project-full="AI Resume Builder helps candidates generate, tailor, and test resumes for modern hiring pipelines. The team already has core ranking logic and needs design help to polish the product and onboarding." data-project-needed="UI Designer" data-project-urgency="2 spots left" data-project-match="92" data-project-tags="#AI,#Startup,#SaaS" data-project-team="Riya,Arman,Joel">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-building">Building</span>
+              <span class="project-hub-demand">2 spots left</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save AI Resume Builder project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/ai-resume-builder/900/560" alt="AI Resume Builder project cover" loading="lazy">
+          </div>
+          <h3>AI Resume Builder</h3>
+          <p class="project-hub-description">AI resume optimization tool for job seekers.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>92%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>UI Designer</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#AI</span>
+            <span>#Startup</span>
+            <span>#SaaS</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">R</span>
+              <span class="project-avatar-stack">A</span>
+              <span class="project-avatar-stack">J</span>
+            </div>
+            <span class="project-hub-needed">Need 1 more person</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+
+        <article class="project-hub-card" data-project-name="CreatorFlow Studio" data-project-category="creator" data-project-role="editor" data-project-status="mvp" data-project-description="Workflow platform for newsletter and short-form content teams." data-project-full="CreatorFlow Studio is shipping an MVP for solo creators and media teams that want to manage content pipelines in one place. The founders need an editor-operator who understands production quality and publishing velocity." data-project-needed="Editor" data-project-urgency="High demand project" data-project-match="89" data-project-tags="#Creator,#Media,#Workflow" data-project-team="Nina,Dev,Sam">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-mvp">MVP</span>
+              <span class="project-hub-demand">High demand project</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save CreatorFlow Studio project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/creatorflow-studio/900/560" alt="CreatorFlow Studio project cover" loading="lazy">
+          </div>
+          <h3>CreatorFlow Studio</h3>
+          <p class="project-hub-description">Workflow platform for newsletter and short-form content teams.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>89%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>Editor</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#Creator</span>
+            <span>#Media</span>
+            <span>#Workflow</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">N</span>
+              <span class="project-avatar-stack">D</span>
+              <span class="project-avatar-stack">S</span>
+            </div>
+            <span class="project-hub-needed">Need 2 more people</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+
+        <article class="project-hub-card" data-project-name="Northwind AI" data-project-category="ai" data-project-role="developer" data-project-status="live" data-project-description="Automation suite for support teams handling repetitive workflows." data-project-full="Northwind AI already serves early design partners and is expanding workflow automation for support teams. The team needs one developer to help productionize integrations and improve dashboard performance." data-project-needed="Developer" data-project-urgency="2 spots left" data-project-match="94" data-project-tags="#AI,#Support,#Automation" data-project-team="Ava,Leo,Mira">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-live">Live</span>
+              <span class="project-hub-demand">2 spots left</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save Northwind AI project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/northwind-ai/900/560" alt="Northwind AI project cover" loading="lazy">
+          </div>
+          <h3>Northwind AI</h3>
+          <p class="project-hub-description">Automation suite for support teams handling repetitive workflows.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>94%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>Developer</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#AI</span>
+            <span>#Support</span>
+            <span>#Automation</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">A</span>
+              <span class="project-avatar-stack">L</span>
+              <span class="project-avatar-stack">M</span>
+            </div>
+            <span class="project-hub-needed">Need 1 more person</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+
+        <article class="project-hub-card" data-project-name="SaaS Signal Board" data-project-category="saas" data-project-role="designer" data-project-status="building" data-project-description="Analytics and insight board for B2B SaaS operators." data-project-full="SaaS Signal Board collects product, revenue, and retention metrics in one operating layer for B2B teams. The team is early and needs a product designer who can simplify dashboards and workflow clarity." data-project-needed="Designer" data-project-urgency="High demand project" data-project-match="87" data-project-tags="#SaaS,#Analytics,#B2B" data-project-team="Kian,Rohit,Zoya">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-building">Building</span>
+              <span class="project-hub-demand">High demand project</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save SaaS Signal Board project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/saas-signal-board/900/560" alt="SaaS Signal Board project cover" loading="lazy">
+          </div>
+          <h3>SaaS Signal Board</h3>
+          <p class="project-hub-description">Analytics and insight board for B2B SaaS operators.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>87%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>Designer</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#SaaS</span>
+            <span>#Analytics</span>
+            <span>#B2B</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">K</span>
+              <span class="project-avatar-stack">R</span>
+              <span class="project-avatar-stack">Z</span>
+            </div>
+            <span class="project-hub-needed">Need 2 more people</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+
+        <article class="project-hub-card" data-project-name="WebSprint OS" data-project-category="web" data-project-role="developer" data-project-status="mvp" data-project-description="Collaborative website launch workspace for micro teams." data-project-full="WebSprint OS helps teams move from brief to launch without fragmented tools. The MVP is live internally and the team needs a frontend developer to improve performance and reusable components." data-project-needed="Developer" data-project-urgency="2 spots left" data-project-match="90" data-project-tags="#Web,#Launch,#Collaboration" data-project-team="Ishan,Tara,Kyle">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-mvp">MVP</span>
+              <span class="project-hub-demand">2 spots left</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save WebSprint OS project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/websprint-os/900/560" alt="WebSprint OS project cover" loading="lazy">
+          </div>
+          <h3>WebSprint OS</h3>
+          <p class="project-hub-description">Collaborative website launch workspace for micro teams.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>90%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>Developer</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#Web</span>
+            <span>#Launch</span>
+            <span>#Collaboration</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">I</span>
+              <span class="project-avatar-stack">T</span>
+              <span class="project-avatar-stack">K</span>
+            </div>
+            <span class="project-hub-needed">Need 1 more person</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+
+        <article class="project-hub-card" data-project-name="ClipForge" data-project-category="creator" data-project-role="editor" data-project-status="live" data-project-description="AI-assisted clipping and editing workflow for creator teams." data-project-full="ClipForge serves creators who publish across reels, shorts, and newsletters. The team is live and now looking for an editor who can shape final outputs and improve turnaround time." data-project-needed="Editor" data-project-urgency="High demand project" data-project-match="91" data-project-tags="#Creator,#Video,#Publishing" data-project-team="Maya,Noel,Aria">
+          <div class="project-hub-top">
+            <div class="project-hub-top-left">
+              <span class="project-hub-status status-live">Live</span>
+              <span class="project-hub-demand">High demand project</span>
+            </div>
+            <button class="project-bookmark" type="button" aria-label="Save ClipForge project">&#9733;</button>
+          </div>
+          <div class="project-hub-media">
+            <img src="https://picsum.photos/seed/clipforge/900/560" alt="ClipForge project cover" loading="lazy">
+          </div>
+          <h3>ClipForge</h3>
+          <p class="project-hub-description">AI-assisted clipping and editing workflow for creator teams.</p>
+          <div class="project-hub-meta">
+            <div>
+              <span class="project-hub-label">Match</span>
+              <strong>91%</strong>
+            </div>
+            <div>
+              <span class="project-hub-label">Looking for</span>
+              <strong>Editor</strong>
+            </div>
+          </div>
+          <div class="project-hub-tags">
+            <span>#Creator</span>
+            <span>#Video</span>
+            <span>#Publishing</span>
+          </div>
+          <div class="project-hub-footer">
+            <div class="project-hub-team">
+              <span class="project-avatar-stack">M</span>
+              <span class="project-avatar-stack">N</span>
+              <span class="project-avatar-stack">A</span>
+            </div>
+            <span class="project-hub-needed">Need 2 more people</span>
+          </div>
+          <div class="project-hub-actions">
+            <button class="btn btn-outline project-detail-trigger" type="button">View Details</button>
+            <button class="btn btn-primary">Join Project</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="projects-bottom-cta">
+        <div>
+          <span class="projects-kicker">Have an idea?</span>
+          <h2>Start your own project and attract the right builders.</h2>
+        </div>
+        <a href="waitlist.html" class="btn btn-primary">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="project-modal hidden" id="projectModal" aria-hidden="true">
+    <div class="project-modal-backdrop" data-project-modal-close></div>
+    <div class="project-modal-dialog">
+      <button class="project-modal-close" type="button" data-project-modal-close aria-label="Close project details">Ã—</button>
+      <div class="project-modal-header">
+        <div>
+          <span class="projects-kicker">Project Details</span>
+          <h2 id="projectModalName"></h2>
+          <p id="projectModalDescription"></p>
+        </div>
+        <span class="project-modal-match" id="projectModalMatch"></span>
+      </div>
+      <div class="project-modal-grid">
+        <div class="project-modal-block">
+          <h3>What they are building</h3>
+          <p id="projectModalFull"></p>
+        </div>
+        <div class="project-modal-block">
+          <h3>Role needed</h3>
+          <p id="projectModalNeeded"></p>
+        </div>
+        <div class="project-modal-block">
+          <h3>Team members</h3>
+          <div class="project-modal-team" id="projectModalTeam"></div>
+        </div>
+        <div class="project-modal-block">
+          <h3>Project tags</h3>
+          <div class="project-modal-tags" id="projectModalTags"></div>
+        </div>
+      </div>
+      <div class="project-modal-actions">
+        <button class="btn btn-outline" type="button" data-project-modal-close>Close</button>
+        <button class="btn btn-primary" type="button">Join Project</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bg">
+      <div class="footer-orb"></div>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+            <span class="logo-text">CollabOS</span>
+          </a>
+          <p class="footer-description">The platform that helps early-stage founders and skilled builders find serious teammates and start real projects fast.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="faq.html">Help Center</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CollabOS. All rights reserved.</p>
+        <p>Made with <span class="heart">&hearts;</span> for builders worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

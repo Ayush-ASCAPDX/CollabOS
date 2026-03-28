@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Waitlist</title>
+  <meta name="description" content="Join the CollabOS early access waitlist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell waitlist-page">
+  <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="waitlist-main">
+    <section class="waitlist-hero">
+      <div class="container waitlist-hero-grid">
+        <div class="waitlist-intro">
+          <span class="waitlist-kicker">Early Access - Limited spots</span>
+          <!-- <h1 class="waitlist-title" >Stop building alone. Find your team.</h1> -->
+          <!-- <p class="waitlist-subtitle">CollabOS helps founders and builders find execution-ready teammates fast. Join the queue, get matched earlier, and start with people who actually ship.</p> -->
+
+          <div class="waitlist-social-proof">
+            <span class="waitlist-proof-count"><span id="waitlistLiveCount">127</span> builders joined</span>
+            <span class="waitlist-proof-note">Average match window: 48 hours</span>
+          </div>
+
+          <p class="waitlist-referral-source hidden" id="waitlistReferralSource"></p>
+
+          <div class="waitlist-card">
+            <div class="waitlist-card-head">
+              <h1>Turn your idea into a real startup</h1>
+              <p>Takes 30 seconds. No spam.</p>
+            </div>
+
+            <form id="waitlistForm" class="waitlist-form" novalidate>
+              <div class="waitlist-grid waitlist-grid-top">
+                <label class="waitlist-field">
+                  <span>Name</span>
+                  <input type="text" id="waitlistName" name="name" placeholder="Alex Chen">
+                </label>
+
+                <label class="waitlist-field">
+                  <span>Email</span>
+                  <input type="email" id="waitlistEmail" name="email" placeholder="you@collabos.com" required>
+                </label>
+              </div>
+
+              <label class="waitlist-field">
+                <span>Referral Code</span>
+                <input type="text" id="waitlistReferralInput" name="referral_code" placeholder="Optional invite code">
+              </label>
+
+              <div class="waitlist-role-block">
+                <span class="waitlist-field-label">I am a...</span>
+                <div class="waitlist-role-pills" id="waitlistRolePills">
+                  <button type="button" class="waitlist-role-pill active" data-value="Founder">Founder</button>
+                  <button type="button" class="waitlist-role-pill" data-value="Developer">Developer</button>
+                  <button type="button" class="waitlist-role-pill" data-value="Designer">Designer</button>
+                  <button type="button" class="waitlist-role-pill" data-value="Creator">Creator</button>
+                </div>
+                <select id="waitlistUserType" name="user_type" class="waitlist-hidden-select" aria-label="User Type">
+                  <option value="Founder" selected>Founder</option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Creator">Creator</option>
+                </select>
+              </div>
+
+              <label class="waitlist-field">
+                <span>What are you building?</span>
+                <select id="waitlistInterest" name="interest">
+                  <option value="Build startup">Build startup</option>
+                  <option value="Side project">Side project</option>
+                  <option value="Freelance">Freelance</option>
+                </select>
+              </label>
+
+              <p id="waitlistError" class="waitlist-error hidden"></p>
+
+              <button type="submit" class="btn btn-primary waitlist-submit" id="waitlistSubmit">
+                <span class="waitlist-submit-label">Join Early Access</span>
+                <span class="waitlist-spinner hidden" id="waitlistSpinner"></span>
+              </button>
+
+              <div class="waitlist-trust-row">
+                <span class="waitlist-trust-chip">Free during beta</span>
+                <span class="waitlist-trust-chip">No credit card</span>
+                <span class="waitlist-trust-chip">Cancel anytime</span>
+              </div>
+
+              <p class="waitlist-urgency">Limited early access spots</p>
+              <p class="waitlist-trust">Most builders get their first relevant match within 48 hours.</p>
+            </form>
+
+            <div class="waitlist-success hidden" id="waitlistSuccess">
+              <div class="waitlist-success-badge">You're on the waitlist</div>
+              <h3>We'll notify you soon</h3>
+              <p id="waitlistSuccessText">You are in line for early access.</p>
+              <div class="waitlist-success-grid">
+                <div>
+                  <span class="waitlist-success-label">Position</span>
+                  <strong id="waitlistPosition">#42</strong>
+                </div>
+                <div>
+                  <span class="waitlist-success-label">Referral code</span>
+                  <strong id="waitlistReferralCode">Ready to share</strong>
+                </div>
+              </div>
+              <p class="waitlist-referral">Invite 3 friends and get early access faster.</p>
+              <div class="waitlist-share">
+                <a id="waitlistWhatsApp" class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a id="waitlistTwitter" class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <button type="button" class="btn btn-outline" id="waitlistCopyLink">Copy link</button>
+              </div>
+              <p class="waitlist-copy-feedback hidden" id="waitlistCopyFeedback">Link copied.</p>
+            </div>
+          </div>
+
+          <div class="waitlist-avatar-row">
+            <div class="waitlist-avatar-stack">
+              <img class="waitlist-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=face" alt="Builder avatar" loading="lazy" decoding="async">
+              <img class="waitlist-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=face" alt="Builder avatar" loading="lazy" decoding="async">
+              <img class="waitlist-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=face" alt="Builder avatar" loading="lazy" decoding="async">
+              <img class="waitlist-avatar" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=72&h=72&fit=crop&crop=face" alt="Builder avatar" loading="lazy" decoding="async">
+            </div>
+            <p><strong id="waitlistBuilderCount">127</strong> builders already in queue</p>
+          </div>
+        </div>
+
+        <div class="waitlist-visual-panel">
+          <div class="waitlist-photo-fade waitlist-photo-fade-top"></div>
+          <div class="waitlist-photo-fade waitlist-photo-fade-bottom"></div>
+          <div class="waitlist-photo-rail" id="waitlistPhotoRail"></div>
+          <div class="waitlist-floating-stats">
+            <div>
+              <strong id="waitlistSpotsLeft">87</strong>
+              <span>spots left</span>
+            </div>
+            <div>
+              <strong>48h</strong>
+              <span>match time</span>
+            </div>
+            <div>
+              <strong>92%</strong>
+              <span>builder fit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="waitlist-live-band" aria-label="Recent activity">
+      <div class="waitlist-live-track" id="waitlistLiveTrack"></div>
+    </section>
+
+    <section class="waitlist-metrics-section">
+      <div class="container waitlist-metrics-grid">
+        <article class="waitlist-metric-card waitlist-reveal">
+          <span class="waitlist-metric-icon">AI</span>
+          <strong>98%</strong>
+          <p>High-confidence builder matching based on goals, speed, and role fit.</p>
+        </article>
+        <article class="waitlist-metric-card waitlist-reveal">
+          <span class="waitlist-metric-icon">48h</span>
+          <strong>48 hours</strong>
+          <p>Most builders see their first serious match in under two days.</p>
+        </article>
+        <article class="waitlist-metric-card waitlist-reveal">
+          <span class="waitlist-metric-icon">120+</span>
+          <strong>120+ shipped</strong>
+          <p>Teams formed through CollabOS have already launched real products.</p>
+        </article>
+        <article class="waitlist-metric-card waitlist-reveal">
+          <span class="waitlist-metric-icon">V</span>
+          <strong>Verified people</strong>
+          <p>Profiles are built around execution, not vanity metrics or audience size.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="waitlist-story-section">
+      <div class="container">
+        <div class="waitlist-section-head">
+          <span class="waitlist-section-kicker">Builder stories</span>
+          <h2>People who used CollabOS to actually ship</h2>
+        </div>
+        <div class="waitlist-story-grid">
+          <article class="waitlist-story-card waitlist-story-card-feature waitlist-reveal">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&h=520&fit=crop" alt="Founder working with a team" loading="lazy" decoding="async">
+            <div class="waitlist-story-content">
+              <span class="waitlist-story-stars">5.0/5</span>
+              <p>"We spent months trying to find a technical partner through random DMs. CollabOS matched us with the right builder in days, and we shipped the MVP in a month."</p>
+              <div class="waitlist-story-author">
+                <strong>Sara Kim</strong>
+                <span>Founder, Flowstack - Seoul</span>
+              </div>
+            </div>
+          </article>
+          <article class="waitlist-story-card waitlist-reveal">
+            <p>"Everyone here is aligned around execution. That changes the quality of the conversations immediately."</p>
+            <div class="waitlist-story-author">
+              <strong>Alex Chen</strong>
+              <span>Full-stack Developer - Berlin</span>
+            </div>
+          </article>
+          <article class="waitlist-story-card waitlist-reveal">
+            <p>"I found a designer in two days and a growth partner by the end of the week. That compressed months of hiring."</p>
+            <div class="waitlist-story-author">
+              <strong>Leon Bauer</strong>
+              <span>Founder - Zurich</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="waitlist-leaderboard-section">
+      <div class="container">
+        <div class="waitlist-leaderboard-card waitlist-reveal">
+          <div class="waitlist-leaderboard-head">
+            <div>
+              <span class="waitlist-leaderboard-kicker">Top Referrers</span>
+              <h2>Builders bringing other builders in</h2>
+            </div>
+            <!-- <a href="admin.html" class="btn btn-outline">View Admin</a> -->
+          </div>
+          <div class="waitlist-leaderboard-list" id="waitlistLeaderboard">
+            <div class="waitlist-leaderboard-empty">No referrals yet. Be the first to share your invite link.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="waitlist-bottom-cta">
+      <div class="container waitlist-bottom-cta-inner waitlist-reveal">
+        <div>
+          <span class="waitlist-section-kicker">Join the queue</span>
+          <h2>Your team is probably already here.</h2>
+          <p>Join early access, get matched with people who fit how you build, and move from idea to execution faster.</p>
+        </div>
+        <a href="#waitlistForm" class="btn btn-primary">Claim My Spot</a>
+      </div>
+    </section> -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+          <span class="logo-text">CollabOS</span>
+        </a>
+        <p>Build with the right people faster.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Product</h4>
+          <a href="community.html">Community</a>
+          <a href="projects.html">Projects</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <a href="faq.html">FAQ</a>
+          <a href="about.html">About</a>
+          <a href="waitlist.html">Join Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Find Your Startup Team in 48 Hours</title>
+  <meta name="description" content="Stop building alone. CollabOS helps early-stage founders and skilled builders find serious teammates and start real projects fast.">
+  <link rel="preload" as="image" href="logo.png">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=900">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell">
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="page-loader-mark">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!-- Navbar -->
+    <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon" width="40" height="40" fetchpriority="high" decoding="async">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <!-- <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div> -->
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600" alt="Team collaboration" class="hero-bg-image" loading="eager" fetchpriority="high" decoding="async" width="1600" height="1067">
+      <div class="hero-overlay"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Now in Early Access</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Find Your <span class="gradient-text">Startup Team</span> in 48 Hours
+        </h1>
+        
+        <p class="hero-subtitle">
+          Stop building alone. Build with serious founders and builders who share your vision.
+        </p>
+        
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg"><a href="waitlist.html">
+            Join Early Access
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></a>
+          </button>
+          <button class="btn btn-outline btn-lg">Start Building</button>
+        </div>
+        
+        <div class="hero-social-proof">
+          <div class="avatar-stack">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Builder" decoding="async" width="100" height="100">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Builder" decoding="async" width="100" height="100">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Builder" decoding="async" width="100" height="100">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Builder" decoding="async" width="100" height="100">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Builder" decoding="async" width="100" height="100">
+          </div>
+          <p><span class="text-bold">100+</span> builders already joined</p>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="hero-main-image">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=900" alt="Team working together" loading="eager" fetchpriority="high" decoding="async" width="900" height="600">
+        </div>
+        
+        <div class="floating-card floating-card-1">
+          <div class="floating-card-header">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Sarah Chen" class="floating-card-avatar" width="100" height="100" decoding="async">
+            <div>
+              <p class="floating-card-name">Sarah Chen</p>
+              <p class="floating-card-role">Full-Stack Dev</p>
+            </div>
+          </div>
+          <div class="floating-card-footer">
+            <span>Match Score</span>
+            <span class="match-score">95%</span>
+          </div>
+        </div>
+        
+        <div class="floating-card floating-card-2">
+          <div class="floating-card-icon gradient-1"></div>
+          <p class="floating-card-name">AI Startup</p>
+          <p class="floating-card-role">3 builders needed</p>
+        </div>
+        
+        <div class="floating-card floating-card-3">
+          <p class="floating-card-role">Project Status</p>
+          <p class="floating-card-name" style="color: #3A3E6C;">Building MVP</p>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        
+        <div class="floating-card floating-card-4">
+          <div class="notification-dot"></div>
+          <span>New match found!</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-bottom-fade"></div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem-section" id="problem">
+    <div class="section-bg section-bg-alt">
+      <div class="section-orb section-orb-center"></div>
+    </div>
+    
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">The Problem</span>
+        <h2 class="section-title">Building Alone is <span class="gradient-text-alt">Broken</span></h2>
+        <p class="section-subtitle">Every founder knows the struggle. You have the vision, but finding the right team feels impossible.</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon gradient-1">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>No Reliable Teammates</h3>
+          <p>Finding committed co-founders who match your energy is nearly impossible.</p>
+          <div class="problem-card-line gradient-1"></div>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon gradient-2">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3>Projects Die Early</h3>
+          <p>90% of side projects fail in the first month due to lack of team accountability.</p>
+          <div class="problem-card-line gradient-2"></div>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon gradient-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <line x1="9" y1="18" x2="15" y2="18"></line>
+              <line x1="10" y1="22" x2="14" y2="22"></line>
+              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+            </svg>
+          </div>
+          <h3>Ideas Never Launch</h3>
+          <p>Great ideas stay in your notes forever without the right people to execute.</p>
+          <div class="problem-card-line gradient-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution-section" id="features">
+    <div class="section-bg">
+      <div class="section-orb section-orb-right"></div>
+      <div class="section-orb section-orb-left"></div>
+    </div>
+    
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge section-badge-alt">The Solution</span>
+        <h2 class="section-title">CollabOS is Your <span class="gradient-text">Team Engine</span></h2>
+        <p class="section-subtitle">A powerful system designed to help founders find, vet, and start building with the perfect teammates.</p>
+      </div>
+      
+      <div class="features-list">
+        <div class="feature-block">
+          <div class="feature-content">
+            <div class="feature-icon gradient-1">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>Smart Matching Engine</h3>
+            <p>AI-powered algorithm that connects you with compatible builders based on skills, goals, and work style.</p>
+          </div>
+          <div class="feature-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=720" alt="Team brainstorming session" class="feature-image" loading="lazy" decoding="async" width="720" height="480">
+            <div class="feature-image-overlay gradient-1"></div>
+            <div class="feature-image-deco-1 gradient-1"></div>
+            <div class="feature-image-deco-2 gradient-1"></div>
+          </div>
+        </div>
+        
+        <div class="feature-block feature-block-reverse">
+          <div class="feature-content">
+            <div class="feature-icon gradient-2">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Verified Builders Network</h3>
+            <p>Every member is vetted. No lurkers, no ghosts. Only serious builders ready to ship.</p>
+          </div>
+          <div class="feature-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=720" alt="Professional team meeting" class="feature-image" loading="lazy" decoding="async" width="720" height="480">
+            <div class="feature-image-overlay gradient-2"></div>
+            <div class="feature-image-deco-1 gradient-2"></div>
+            <div class="feature-image-deco-2 gradient-2"></div>
+          </div>
+        </div>
+        
+        <div class="feature-block">
+          <div class="feature-content">
+            <div class="feature-icon gradient-3">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>Instant Project Rooms</h3>
+            <p>One-click project spaces with built-in chat, tasks, and milestones to start shipping immediately.</p>
+          </div>
+          <div class="feature-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=720" alt="Team collaborating on project" class="feature-image" loading="lazy" decoding="async" width="720" height="480">
+            <div class="feature-image-overlay gradient-3"></div>
+            <div class="feature-image-deco-1 gradient-3"></div>
+            <div class="feature-image-deco-2 gradient-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="section-bg section-bg-alt">
+      <div class="section-orb section-orb-center-large"></div>
+    </div>
+    
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge section-badge-purple">How It Works</span>
+        <h2 class="section-title">From Zero to <span class="gradient-text-alt">Team</span> in Minutes</h2>
+      </div>
+      
+      <div class="steps-wrapper">
+        <div class="steps-line"></div>
+        
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon gradient-1">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
+              </svg>
+            </div>
+            <h3>Create Profile</h3>
+            <p>Share your skills, interests, and what you want to build</p>
+          </div>
+          
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon gradient-2">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3>Get Matched</h3>
+            <p>Our AI finds compatible builders based on your goals</p>
+          </div>
+          
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon gradient-3">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Start Building</h3>
+            <p>Jump into your project room and ship together</p>
+          </div>
+          
+          <div class="step-card">
+            <span class="step-number">04</span>
+            <div class="step-icon gradient-4">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M4.5 22V4.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V22"></path>
+                <path d="M9 22V8a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v14"></path>
+                <path d="M18.5 22V12.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V22"></path>
+                <path d="M2 22h20"></path>
+              </svg>
+            </div>
+            <h3>Launch Fast</h3>
+            <p>Go from idea to MVP in weeks, not months</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="social-proof-section" id="community">
+    <div class="section-bg">
+      <div class="section-orb section-orb-top-left"></div>
+      <div class="section-orb section-orb-bottom-right"></div>
+    </div>
+    
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge section-badge-green">Social Proof</span>
+        <h2 class="section-title">Builders Are <span class="gradient-text-alt">Shipping</span></h2>
+      </div>
+      
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-value">100+</p>
+          <p class="stat-label">Builders Joined</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">48hr</p>
+          <p class="stat-label">Avg Match Time</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">25+</p>
+          <p class="stat-label">Projects Launched</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value">95%</p>
+          <p class="stat-label">Match Quality</p>
+        </div>
+      </div>
+      
+      <!-- Testimonials -->
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote gradient-1">&ldquo;</div>
+          <p class="testimonial-text">Found my technical co-founder in 3 days. We shipped our MVP in 2 weeks. CollabOS is a game-changer.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Jordan Martinez" loading="lazy" decoding="async">
+            <div>
+              <p class="testimonial-name">Jordan Martinez</p>
+              <p class="testimonial-role">Founder @ NexusAI</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote gradient-2">&ldquo;</div>
+          <p class="testimonial-text">I was building alone for months. Within a week of joining, I had a full team ready to execute.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Priya Sharma" loading="lazy" decoding="async">
+            <div>
+              <p class="testimonial-name">Priya Sharma</p>
+              <p class="testimonial-role">Designer & Co-Founder</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote gradient-3">&ldquo;</div>
+          <p class="testimonial-text">The matching algorithm actually works. Every connection has been high-quality and serious.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop" alt="Marcus Chen" loading="lazy" decoding="async">
+            <div>
+              <p class="testimonial-name">Marcus Chen</p>
+              <p class="testimonial-role">Full-Stack Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating Avatars -->
+      <div class="floating-avatars-wrapper">
+        <div class="floating-avatars">
+          <div class="avatar-stack avatar-stack-large">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop" alt="Builder" loading="lazy" decoding="async">
+          </div>
+          <p><span class="text-bold">+92</span> more builders this week</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section" id="projects">
+    <div class="section-bg section-bg-alt">
+      <div class="section-orb section-orb-right-large"></div>
+    </div>
+    
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Live Projects</span>
+        <h2 class="section-title">What Builders Are <span class="gradient-text">Creating</span></h2>
+        <p class="section-subtitle">Real startups launched by teams formed on CollabOS</p>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=560" alt="NexusAI" loading="lazy" decoding="async" width="560" height="373">
+            <span class="project-status status-live">Live</span>
+          </div>
+          <div class="project-content">
+            <h3>NexusAI</h3>
+            <p>AI-powered customer support platform</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member" loading="lazy" decoding="async">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" loading="lazy" decoding="async">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member" loading="lazy" decoding="async">
+              </div>
+              <span>3 builders</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=560" alt="FinTrack" loading="lazy" decoding="async" width="560" height="373">
+            <span class="project-status status-mvp">MVP</span>
+          </div>
+          <div class="project-content">
+            <h3>FinTrack</h3>
+            <p>Personal finance management for Gen Z</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="Team member">
+              </div>
+              <span>4 builders</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=600" alt="DevMatch">
+            <span class="project-status status-building">Building</span>
+          </div>
+          <div class="project-content">
+            <h3>DevMatch</h3>
+            <p>Tinder for developer collaborations</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop" alt="Team member">
+              </div>
+              <span>2 builders</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600" alt="EcoShop">
+            <span class="project-status status-live">Live</span>
+          </div>
+          <div class="project-content">
+            <h3>EcoShop</h3>
+            <p>Sustainable marketplace for local goods</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member">
+              </div>
+              <span>5 builders</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=600" alt="StudyBuddy">
+            <span class="project-status status-mvp">MVP</span>
+          </div>
+          <div class="project-content">
+            <h3>StudyBuddy</h3>
+            <p>AI tutoring platform for students</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Team member">
+              </div>
+              <span>3 builders</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=600" alt="RemoteOS">
+            <span class="project-status status-building">Building</span>
+          </div>
+          <div class="project-content">
+            <h3>RemoteOS</h3>
+            <p>Operating system for remote teams</p>
+            <div class="project-footer">
+              <div class="avatar-stack avatar-stack-small">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop" alt="Team member">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="Team member">
+              </div>
+              <span>4 builders</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-bg">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+      <div class="cta-orb cta-orb-3"></div>
+      <div class="cta-grid"></div>
+    </div>
+    
+    <div class="container cta-container">
+      <div class="cta-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>Join the waitlist today</span>
+      </div>
+      
+      <h2 class="cta-title">
+        Stop Building Alone. <span class="gradient-text">Start Building Now.</span>
+      </h2>
+      
+      <p class="cta-subtitle">Your next co-founder is waiting. Join CollabOS and find your perfect team in 48 hours.</p>
+      
+      <button class="btn btn-primary btn-xl"><a href="waitlist.html">
+        Join Early Access
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg></a>
+      </button>
+      
+      <p class="cta-note">No credit card required &bull; Free during beta &bull; Join 100+ builders</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg">
+      <div class="footer-orb"></div>
+    </div>
+    
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+            <span class="logo-text">CollabOS</span>
+          </a>
+          <p class="footer-description">The platform that helps early-stage founders and skilled builders find serious teammates and start real projects fast.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="how-to-works.html">How It Works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#">Roadmap</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 CollabOS. All rights reserved.</p>
+        <p>Made with <span class="heart">&hearts;</span> for builders worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

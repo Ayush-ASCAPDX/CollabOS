@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Community</title>
+  <meta name="description" content="Discover builders, active projects, and community categories on CollabOS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell community-v2">
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="page-loader-mark">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+    <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="community-hero-v2">
+    <div class="community-hero-bg">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400" alt="Builders collaborating in a workspace" class="community-hero-bg-image" loading="eager" fetchpriority="high" decoding="async">
+    </div>
+    <div class="container community-hero-grid">
+      <div class="community-hero-left">
+        <span class="community-kicker">Open Community · 500+ Builders</span>
+        <h1 class="community-title-v2">Where serious builders meet, align, and ship.</h1>
+        <p class="community-subtitle-v2">Discover verified profiles, explore active projects, and connect with founders, developers, designers, and creators.</p>
+        <div class="community-hero-actions">
+          <a href="#builders" class="btn btn-primary">Explore Builders</a>
+          <a href="#projects" class="btn btn-outline">Browse Projects</a>
+        </div>
+        <div class="community-hero-stats">
+          <div>
+            <span>48h</span>
+            <p>Avg match time</p>
+          </div>
+          <div>
+            <span>120+</span>
+            <p>Projects shipped</p>
+          </div>
+          <div>
+            <span>96%</span>
+            <p>Match score</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-hero-right">
+        <div class="community-mosaic">
+          <div class="community-tile">
+            <div class="tile-avatar gradient-1">SJ</div>
+            <div>
+              <h3>Sophia James</h3>
+              <p>Product Designer · London</p>
+            </div>
+            <span class="tile-badge">Designer</span>
+          </div>
+          <div class="community-tile">
+            <div class="tile-avatar gradient-2">AK</div>
+            <div>
+              <h3>Arjun Kapoor</h3>
+              <p>Full-stack · Bangalore</p>
+            </div>
+            <span class="tile-badge">Builder</span>
+          </div>
+          <div class="community-tile community-tile-stat">
+            <div>
+              <span>512</span>
+              <p>Builders online</p>
+            </div>
+          </div>
+          <div class="community-tile">
+            <div class="tile-avatar gradient-3">LM</div>
+            <div>
+              <h3>Lina Morales</h3>
+              <p>Creator · NYC</p>
+            </div>
+            <span class="tile-badge">Creator</span>
+          </div>
+          <div class="community-tile community-tile-wide">
+            <div class="tile-avatar gradient-4">YT</div>
+            <div>
+              <h3>Yuki Tanaka</h3>
+              <p>Backend · Tokyo</p>
+            </div>
+            <span class="tile-badge">Engineer</span>
+          </div>
+          <div class="community-tile community-tile-stat">
+            <div>
+              <span>3k+</span>
+              <p>Matches made</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-section-v2" id="builders">
+    <div class="container">
+      <div class="community-section-header">
+        <div>
+          <span class="community-label">Builder Profiles</span>
+          <h2>Featured builders this week</h2>
+        </div>
+        <a href="#" class="community-link">View all</a>
+      </div>
+      <div class="community-filters">
+        <div class="filter-group">
+          <span class="filter-label">Role</span>
+          <div class="filter-options" data-filter-group="role">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="developer">Developer</button>
+            <button class="filter-chip" data-filter="designer">Designer</button>
+            <button class="filter-chip" data-filter="creator">Creator</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Goal</span>
+          <div class="filter-options" data-filter-group="goal">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="startup">Startup</button>
+            <button class="filter-chip" data-filter="side-project">Side project</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Availability</span>
+          <div class="filter-options" data-filter-group="availability">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="full-time">Full-time</button>
+            <button class="filter-chip" data-filter="part-time">Part-time</button>
+          </div>
+        </div>
+      </div>
+      <div class="builder-scroll-controls">
+        <button class="builder-scroll-btn builder-scroll-btn-left" type="button" aria-label="Scroll builder cards left">‹</button>
+        <button class="builder-scroll-btn builder-scroll-btn-right" type="button" aria-label="Scroll builder cards right">›</button>
+      </div>
+      <div class="builder-scroll">
+        <div class="community-cards-v2">
+          <article class="builder-card" data-name="Sophia James" data-role="Product Designer" data-location="London, UK" data-badge="Designer" data-quote="Design is how you turn clarity into momentum." data-stats="6|Experience|18|Design systems|120|Research insights" data-tags="UX,Design Systems,Research" data-image="https://images.pexels.com/photos/30004324/pexels-photo-30004324.jpeg?cs=srgb&dl=pexels-prolificpeople-30004324.jpg&fm=jpg" data-filter-role="designer" data-filter-goal="startup" data-filter-availability="part-time">
+            <div class="builder-cover gradient-2">
+              <img class="builder-cover-image" src="https://images.pexels.com/photos/30004324/pexels-photo-30004324.jpeg?cs=srgb&dl=pexels-prolificpeople-30004324.jpg&fm=jpg" alt="Sophia James">
+              <div class="builder-badge">Designer</div>
+            </div>
+            <div class="builder-body">
+              <div class="builder-title-row">
+                <div>
+                  <h3>Sophia James</h3>
+                  <p>Product Designer</p>
+                </div>
+                <div class="builder-match">
+                  <span>95%</span>
+                  <small>match</small>
+                </div>
+              </div>
+              <div class="builder-tags">
+                <span>UX</span>
+                <span>Design Systems</span>
+                <span>Research</span>
+              </div>
+              <div class="builder-meta">
+                <span>London, UK</span>
+                <span>Available evenings</span>
+              </div>
+              <div class="builder-actions">
+                <button class="btn btn-outline">View Profile</button>
+                <button class="btn btn-primary">Connect</button>
+              </div>
+              <div class="builder-expand">
+                <p class="builder-quote"></p>
+                <div class="builder-stats"></div>
+              </div>
+            </div>
+          </article>
+          <article class="builder-card" data-name="Arjun Kapoor" data-role="Full-stack Engineer" data-location="Bangalore, IN" data-badge="Builder" data-quote="Ship fast, document faster." data-stats="7|Experience|22|MVPs shipped|36|PRs merged" data-tags="React,Node,AI" data-image="https://images.pexels.com/photos/12311518/pexels-photo-12311518.jpeg?cs=srgb&dl=pexels-josepheulo-nyc-12311518.jpg&fm=jpg" data-filter-role="developer" data-filter-goal="startup" data-filter-availability="full-time">
+            <div class="builder-cover gradient-4">
+              <img class="builder-cover-image" src="https://images.pexels.com/photos/12311518/pexels-photo-12311518.jpeg?cs=srgb&dl=pexels-josepheulo-nyc-12311518.jpg&fm=jpg" alt="Arjun Kapoor">
+              <div class="builder-badge">Builder</div>
+            </div>
+            <div class="builder-body">
+              <div class="builder-title-row">
+                <div>
+                  <h3>Arjun Kapoor</h3>
+                  <p>Full-stack Engineer</p>
+                </div>
+                <div class="builder-match">
+                  <span>92%</span>
+                  <small>match</small>
+                </div>
+              </div>
+              <div class="builder-tags">
+                <span>React</span>
+                <span>Node</span>
+                <span>AI</span>
+              </div>
+              <div class="builder-meta">
+                <span>Bangalore, IN</span>
+                <span>Open to co-founders</span>
+              </div>
+              <div class="builder-actions">
+                <button class="btn btn-outline">View Profile</button>
+                <button class="btn btn-primary">Connect</button>
+              </div>
+              <div class="builder-expand">
+                <p class="builder-quote"></p>
+                <div class="builder-stats"></div>
+              </div>
+            </div>
+          </article>
+          <article class="builder-card" data-name="Lina Morales" data-role="Creator · Growth" data-location="New York, US" data-badge="Creator" data-quote="Distribution is a product." data-stats="5|Experience|42|Campaigns|18|Partnerships" data-tags="Content,Community,Partnerships" data-image="https://images.pexels.com/photos/18879150/pexels-photo-18879150.jpeg?cs=srgb&dl=pexels-julianemonarifotografia-18879150.jpg&fm=jpg" data-filter-role="creator" data-filter-goal="side-project" data-filter-availability="part-time">
+            <div class="builder-cover gradient-1">
+              <img class="builder-cover-image" src="https://images.pexels.com/photos/18879150/pexels-photo-18879150.jpeg?cs=srgb&dl=pexels-julianemonarifotografia-18879150.jpg&fm=jpg" alt="Lina Morales">
+              <div class="builder-badge">Creator</div>
+            </div>
+            <div class="builder-body">
+              <div class="builder-title-row">
+                <div>
+                  <h3>Lina Morales</h3>
+                  <p>Creator · Growth</p>
+                </div>
+                <div class="builder-match">
+                  <span>90%</span>
+                  <small>match</small>
+                </div>
+              </div>
+              <div class="builder-tags">
+                <span>Content</span>
+                <span>Community</span>
+                <span>Partnerships</span>
+              </div>
+              <div class="builder-meta">
+                <span>New York, US</span>
+                <span>Remote-first</span>
+              </div>
+              <div class="builder-actions">
+                <button class="btn btn-outline">View Profile</button>
+                <button class="btn btn-primary">Connect</button>
+              </div>
+              <div class="builder-expand">
+                <p class="builder-quote"></p>
+                <div class="builder-stats"></div>
+              </div>
+            </div>
+          </article>
+          <article class="builder-card" data-name="Jules Tan" data-role="Product Engineer" data-location="Singapore" data-badge="Engineer" data-quote="Great infra disappears into the background." data-stats="4|Experience|12|Releases|8|Systems scaled" data-tags="Next.js,TypeScript,Infra" data-image="https://images.pexels.com/photos/7625285/pexels-photo-7625285.jpeg?cs=srgb&dl=pexels-mikhail-nilov-7625285.jpg&fm=jpg" data-filter-role="developer" data-filter-goal="side-project" data-filter-availability="part-time">
+            <div class="builder-cover gradient-3">
+              <img class="builder-cover-image" src="https://images.pexels.com/photos/7625285/pexels-photo-7625285.jpeg?cs=srgb&dl=pexels-mikhail-nilov-7625285.jpg&fm=jpg" alt="Jules Tan">
+              <div class="builder-badge">Engineer</div>
+            </div>
+            <div class="builder-body">
+              <div class="builder-title-row">
+                <div>
+                  <h3>Jules Tan</h3>
+                  <p>Product Engineer</p>
+                </div>
+                <div class="builder-match">
+                  <span>88%</span>
+                  <small>match</small>
+                </div>
+              </div>
+              <div class="builder-tags">
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>Infra</span>
+              </div>
+              <div class="builder-meta">
+                <span>Singapore</span>
+                <span>4-8 hrs/week</span>
+              </div>
+              <div class="builder-actions">
+                <button class="btn btn-outline">View Profile</button>
+                <button class="btn btn-primary">Connect</button>
+              </div>
+              <div class="builder-expand">
+                <p class="builder-quote"></p>
+                <div class="builder-stats"></div>
+              </div>
+            </div>
+          </article>
+          <article class="builder-card" data-name="Rhea Nair" data-role="Growth Lead" data-location="Dubai, AE" data-badge="Growth" data-quote="Compound growth beats spikes." data-stats="6|Experience|9|Playbooks|24|Experiments" data-tags="GTM,Lifecycle,Community" data-image="https://images.pexels.com/photos/30004325/pexels-photo-30004325.jpeg?cs=srgb&dl=pexels-prolificpeople-30004325.jpg&fm=jpg" data-filter-role="creator" data-filter-goal="startup" data-filter-availability="full-time">
+            <div class="builder-cover gradient-2">
+              <img class="builder-cover-image" src="https://images.pexels.com/photos/30004325/pexels-photo-30004325.jpeg?cs=srgb&dl=pexels-prolificpeople-30004325.jpg&fm=jpg" alt="Rhea Nair">
+              <div class="builder-badge">Growth</div>
+            </div>
+            <div class="builder-body">
+              <div class="builder-title-row">
+                <div>
+                  <h3>Rhea Nair</h3>
+                  <p>Growth Lead</p>
+                </div>
+                <div class="builder-match">
+                  <span>93%</span>
+                  <small>match</small>
+                </div>
+              </div>
+              <div class="builder-tags">
+                <span>GTM</span>
+                <span>Lifecycle</span>
+                <span>Community</span>
+              </div>
+              <div class="builder-meta">
+                <span>Dubai, AE</span>
+                <span>Open to partnerships</span>
+              </div>
+              <div class="builder-actions">
+                <button class="btn btn-outline">View Profile</button>
+                <button class="btn btn-primary">Connect</button>
+              </div>
+              <div class="builder-expand">
+                <p class="builder-quote"></p>
+                <div class="builder-stats"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="community-section-v2" id="categories">
+    <div class="container">
+      <div class="community-section-header">
+        <div>
+          <span class="community-label">Categories</span>
+          <h2>Find your niche</h2>
+        </div>
+      </div>
+      <div class="community-categories-v2">
+        <div class="category-card">Developers</div>
+        <div class="category-card">Designers</div>
+        <div class="category-card">Creators</div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="community-section-v2 community-section-alt" id="activity">
+    <div class="container">
+      <div class="community-section-header">
+        <div>
+          <span class="community-label">Active Builders</span>
+          <h2>Live activity</h2>
+        </div>
+        <div class="activity-scroll-hint" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="activity-scroll-icon">↓</span>
+        </div>
+      </div>
+      <div class="community-feed-wrap">
+      <div class="community-feed">
+        <div class="community-feed-item">
+          <div class="community-feed-icon" aria-hidden="true">+</div>
+          <div>
+            <h3>Rahul joined AI project</h3>
+            <p>Joined Northwind AI · 2 minutes ago</p>
+          </div>
+        </div>
+        <div class="community-feed-item">
+          <div class="community-feed-icon" aria-hidden="true">=</div>
+          <div>
+            <h3>Ananya matched with 2 builders</h3>
+            <p>Product designer · 8 minutes ago</p>
+          </div>
+        </div>
+        <div class="community-feed-item">
+          <div class="community-feed-icon" aria-hidden="true">*</div>
+          <div>
+            <h3>New team formed</h3>
+            <p>Fintech analytics project · 15 minutes ago</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-section-v2 community-section-alt" id="projects">
+    <div class="container">
+      <div class="community-section-header">
+        <div>
+          <span class="community-label">Active Projects</span>
+          <h2>Teams building right now</h2>
+        </div>
+        <a href="#" class="community-link">See pipeline</a>
+      </div>
+      <div class="project-list-v2">
+        <div class="project-row">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=320" alt="Northwind AI team working session" class="project-row-image" loading="lazy" decoding="async">
+          <div>
+            <h3>Northwind AI</h3>
+            <p>Automation suite for support teams.</p>
+          </div>
+          <span class="project-status">Building MVP</span>
+        </div>
+        <div class="project-row">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=320" alt="Pulseboard analytics dashboard" class="project-row-image" loading="lazy" decoding="async">
+          <div>
+            <h3>Pulseboard</h3>
+            <p>Real-time KPI dashboard for distributed teams.</p>
+          </div>
+          <span class="project-status">Hiring</span>
+        </div>
+        <div class="project-row">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=320" alt="Signal Studio creator workspace" class="project-row-image" loading="lazy" decoding="async">
+          <div>
+            <h3>Signal Studio</h3>
+            <p>Creator toolkit for newsletter and audience growth.</p>
+          </div>
+          <span class="project-status">Live</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="community-section-v2 community-who">
+    <div class="container">
+      <div class="community-section-header">
+        <div>
+          <span class="community-label">Who is this for?</span>
+          <h2>Built for founders and builders</h2>
+        </div>
+      </div>
+      <div class="who-grid-v2">
+        <div>
+          <h3>Founders</h3>
+          <p>Find builders who can ship fast and own outcomes.</p>
+        </div>
+        <div>
+          <h3>Builders</h3>
+          <p>Join serious teams and work on ambitious products.</p>
+        </div>
+        <div>
+          <h3>Creators</h3>
+          <p>Collaborate on content, distribution, and community growth.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <footer class="footer">
+    <div class="footer-bg">
+      <div class="footer-orb"></div>
+    </div>
+    
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+            <span class="logo-text">CollabOS</span>
+          </a>
+          <p class="footer-description">The platform that helps early-stage founders and skilled builders find serious teammates and start real projects fast.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#">Roadmap</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 CollabOS. All rights reserved.</p>
+        <p>Made with <span class="heart">&hearts;</span> for builders worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

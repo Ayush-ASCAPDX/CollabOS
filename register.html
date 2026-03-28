@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=waitlist.html">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>CollabOS - Create Account</title>
+  <meta name="description" content="Create a CollabOS account to meet serious builders and launch faster.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell">
+    <button class="sidebar-mobile-toggle" id="mobileMenuBtn" aria-label="Toggle sidebar">
+    <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg class="close-icon hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="sidebar-backdrop hidden" id="sidebarBackdrop"></div>
+
+  <aside class="app-sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo sidebar-brand">
+        <img src="logo.png" alt="CollabOS logo" class="logo-icon">
+        <div class="sidebar-brand-copy">
+          <span class="logo-text">CollabOS</span>
+          <span class="sidebar-brand-meta">Build with the right people</span>
+        </div>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="navLinks">
+      <a href="index.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="house"></i></span><span class="sidebar-link-label">Home</span></a>
+      <a href="how-to-works.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="workflow"></i></span><span class="sidebar-link-label">How It Works</span></a>
+      <a href="community.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="users"></i></span><span class="sidebar-link-label">Community</span></a>
+      <a href="projects.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="folder-kanban"></i></span><span class="sidebar-link-label">Projects</span></a>
+      <a href="pricing.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="wallet-cards"></i></span><span class="sidebar-link-label">Pricing</span></a>
+      <a href="faq.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="circle-help"></i></span><span class="sidebar-link-label">FAQ</span></a>
+      <a href="about.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="info"></i></span><span class="sidebar-link-label">About</span></a>
+      <a href="profile.html" class="sidebar-link"><span class="sidebar-link-icon"><i data-lucide="user-round"></i></span><span class="sidebar-link-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-status">
+        <span class="sidebar-status-dot"></span>
+        <div class="sidebar-status-copy">
+          <strong>Early Access</strong>
+          <span>Free during beta</span>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <a href="waitlist.html" class="btn btn-ghost login-link sidebar-action-link">Early Access</a>
+        <a href="waitlist.html" class="btn btn-primary sidebar-action-link">Join Waitlist</a>
+      </div>
+    </div>
+  </aside>
+
+  <section class="auth-page auth-page-image">
+    <div class="section-bg section-bg-alt">
+      <div class="section-orb section-orb-right"></div>
+      <div class="section-orb section-orb-left"></div>
+      <div class="auth-grid-pattern"></div>
+    </div>
+    
+    <div class="container">
+      <div class="auth-split-card">
+        <div class="auth-split-media">
+          <div class="auth-split-image">
+            <img src="https://images.pexels.com/photos/6954191/pexels-photo-6954191.jpeg?cs=srgb&dl=pexels-george-milton-6954191.jpg&fm=jpg" alt="Cheerful woman working on a laptop">
+          </div>
+          <div class="auth-split-overlay">
+            <p class="auth-split-quote">Build with creators who move fast, stay accountable, and ship together.</p>
+            <div class="auth-split-badges">
+              <span>Founders</span>
+              <span>Design</span>
+              <span>Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-split-form">
+          <div class="auth-card-header">
+            <span class="auth-eyebrow">Get Started</span>
+            <h1 class="auth-split-title">Create your account</h1>
+            <p class="auth-split-subtitle">Meet serious builders and launch faster with the right team.</p>
+          </div>
+          
+          <form class="auth-form" action="#">
+            <label class="auth-field">
+              <span>Full Name</span>
+              <input type="text" placeholder="Jordan Martinez" required>
+            </label>
+            <label class="auth-field">
+              <span>Email</span>
+              <input type="email" placeholder="you@collabos.com" required>
+            </label>
+            <label class="auth-field">
+              <span>Password</span>
+              <input type="password" placeholder="••••••••" minlength="6" required>
+            </label>
+            <label class="auth-field">
+              <span>Your Role</span>
+              <select required>
+                <option value="" disabled selected>Select your role</option>
+                <option>Founder</option>
+                <option>Engineer</option>
+                <option>Designer</option>
+                <option>Growth</option>
+                <option>Product</option>
+              </select>
+            </label>
+            <button class="btn btn-primary w-full" type="submit">Create Account</button>
+          </form>
+          
+          <p class="auth-note">By creating an account you agree to the CollabOS terms and privacy policy.</p>
+          <p class="auth-note">Already have an account? <a href="waitlist.html" class="auth-link">Join the waitlist</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>window.location.replace("waitlist.html");</script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
