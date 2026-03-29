@@ -3,12 +3,14 @@ const crypto = require('crypto');
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cron = require('node-cron');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
+const WAITLIST_SUMMARY_CRON = process.env.WAITLIST_SUMMARY_CRON || '0 * * * *';
 
 if (!MONGODB_URI) {
   console.error('Missing MONGODB_URI. Copy .env.example to .env and set your Mongo connection string.');
@@ -70,6 +72,31 @@ const createUniqueReferralCode = async () => {
     code = generateReferralCode();
   }
   return code;
+};
+
+const startWaitlistSummaryCron = () => {
+  if (!cron.validate(WAITLIST_SUMMARY_CRON)) {
+    console.error(`Invalid WAITLIST_SUMMARY_CRON expression: ${WAITLIST_SUMMARY_CRON}`);
+    return;
+  }
+
+  cron.schedule(WAITLIST_SUMMARY_CRON, async () => {
+    try {
+      const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const [totalCount, recentSignups] = await Promise.all([
+        WaitlistEntry.countDocuments(),
+        WaitlistEntry.countDocuments({ createdAt: { $gte: since } })
+      ]);
+
+      console.log(
+        `[cron] Waitlist summary: total=${totalCount}, joined_last_24h=${recentSignups}`
+      );
+    } catch (error) {
+      console.error('[cron] Waitlist summary failed:', error.message);
+    }
+  });
+
+  console.log(`Waitlist summary cron active: ${WAITLIST_SUMMARY_CRON}`);
 };
 
 app.use(express.json());
@@ -288,6 +315,7 @@ app.get('*', (req, res) => {
 const start = async () => {
   try {
     await mongoose.connect(MONGODB_URI);
+    startWaitlistSummaryCron();
     app.listen(PORT, () => {
       console.log(`CollabOS server running on http://localhost:${PORT}`);
     });
