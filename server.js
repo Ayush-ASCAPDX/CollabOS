@@ -111,7 +111,7 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
 });
 
-app.get('/cron-task', async (_req, res) => {
+app.get(['/cron-task', '/cron-task/'], async (_req, res) => {
   try {
     console.log('[cron] HTTP cron started');
     await runWaitlistSummary();
