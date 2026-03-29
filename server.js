@@ -74,6 +74,18 @@ const createUniqueReferralCode = async () => {
   return code;
 };
 
+const runWaitlistSummary = async () => {
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const [totalCount, recentSignups] = await Promise.all([
+    WaitlistEntry.countDocuments(),
+    WaitlistEntry.countDocuments({ createdAt: { $gte: since } })
+  ]);
+
+  console.log(
+    `[cron] Waitlist summary complete: total=${totalCount}, joined_last_24h=${recentSignups}`
+  );
+};
+
 const startWaitlistSummaryCron = () => {
   if (!cron.validate(WAITLIST_SUMMARY_CRON)) {
     console.error(`Invalid WAITLIST_SUMMARY_CRON expression: ${WAITLIST_SUMMARY_CRON}`);
@@ -82,15 +94,8 @@ const startWaitlistSummaryCron = () => {
 
   cron.schedule(WAITLIST_SUMMARY_CRON, async () => {
     try {
-      const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-      const [totalCount, recentSignups] = await Promise.all([
-        WaitlistEntry.countDocuments(),
-        WaitlistEntry.countDocuments({ createdAt: { $gte: since } })
-      ]);
-
-      console.log(
-        `[cron] Waitlist summary: total=${totalCount}, joined_last_24h=${recentSignups}`
-      );
+      console.log('[cron] Waitlist summary started');
+      await runWaitlistSummary();
     } catch (error) {
       console.error('[cron] Waitlist summary failed:', error.message);
     }
@@ -104,6 +109,18 @@ app.use(express.static(path.join(__dirname)));
 
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
+});
+
+app.get('/cron-task', async (_req, res) => {
+  try {
+    console.log('[cron] HTTP cron started');
+    await runWaitlistSummary();
+    console.log('[cron] HTTP cron finished');
+    res.type('text/plain').send('OK');
+  } catch (error) {
+    console.error('[cron] HTTP cron failed:', error.message);
+    res.type('text/plain').send('Error');
+  }
 });
 
 app.get('/api/waitlist/stats', async (_req, res) => {
