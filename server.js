@@ -106,7 +106,10 @@ const startWaitlistSummaryCron = () => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
-
+// Redirect all /api/* requests to waitlist page
+app.all('/api/*', (req, res) => {
+  res.redirect('/waitlist.html');
+});
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
 });
