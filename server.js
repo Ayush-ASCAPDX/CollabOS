@@ -106,6 +106,17 @@ const startWaitlistSummaryCron = () => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
+
+// Redirect browser navigations to /api/* back to the home page,
+// while allowing programmatic API requests to continue.
+app.use('/api', (req, res, next) => {
+  const acceptHeader = String(req.get('accept') || '');
+  if (req.method === 'GET' && acceptHeader.includes('text/html')) {
+    return res.redirect('/index.html');
+  }
+  next();
+});
+
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
 });
@@ -161,39 +172,8 @@ app.get('/api/waitlist/leaderboard', async (_req, res) => {
   }
 });
 
-app.get('/api/waitlist/entries', async (_req, res) => {
-  try {
-    const entries = await WaitlistEntry.find(
-      {},
-      {
-        email: 1,
-        name: 1,
-        userType: 1,
-        interest: 1,
-        referralCode: 1,
-        referralCount: 1,
-        createdAt: 1
-      }
-    )
-      .sort({ createdAt: -1 })
-      .lean();
-
-    res.json({
-      entries: entries.map((entry, index) => ({
-        id: String(entry._id),
-        position: entries.length - index,
-        email: entry.email,
-        name: entry.name,
-        userType: entry.userType,
-        interest: entry.interest,
-        referralCode: entry.referralCode,
-        referralCount: entry.referralCount,
-        createdAt: entry.createdAt
-      }))
-    });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to load waitlist entries.' });
-  }
+app.get('/api/waitlist/entries', (_req, res) => {
+  res.json([]);
 });
 
 app.get('/api/waitlist/export.csv', async (_req, res) => {
@@ -312,11 +292,11 @@ app.post('/api/waitlist', async (req, res) => {
     res.status(500).json({ error: 'Unable to join the waitlist right now.' });
   }
 });
-// Redirect unknown GET /api/* requests to the waitlist page.
-app.get('/api/*', (_req, res) => {
-  res.redirect('/waitlist.html');
-});
 
+// Redirect unknown GET /api/* requests to the home page.
+app.get('/api/*', (_req, res) => {
+  res.redirect('/index.html');
+});
 
 app.get('*', (req, res) => {
   const requestedPath = path.join(__dirname, req.path);
