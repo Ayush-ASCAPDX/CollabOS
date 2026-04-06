@@ -106,10 +106,6 @@ const startWaitlistSummaryCron = () => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
-// Redirect all /api/* requests to waitlist page
-app.all('/api/*', (req, res) => {
-  res.redirect('/waitlist.html');
-});
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true });
 });
@@ -316,6 +312,11 @@ app.post('/api/waitlist', async (req, res) => {
     res.status(500).json({ error: 'Unable to join the waitlist right now.' });
   }
 });
+// Redirect unknown GET /api/* requests to the waitlist page.
+app.get('/api/*', (_req, res) => {
+  res.redirect('/waitlist.html');
+});
+
 
 app.get('*', (req, res) => {
   const requestedPath = path.join(__dirname, req.path);
